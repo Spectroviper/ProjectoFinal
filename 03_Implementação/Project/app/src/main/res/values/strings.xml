@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_regions">Regions</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+
+    <string name="pk_generations">%1$d Generation</string>
+    <string name="pk_id">#%1$d</string>
+
+
+
+    <string name="menu_home">Home View</string>
+    <string name="menu_pokedex">Pokedex</string>
+
+    <string name="pokemons">Pokemons</string>
+
+    <!-- Pokemon Details String -->
+
+    <string name="title_weight">Weight</string>
+    <string name="title_height">Height</string>
+    <string name="title_category">Category</string>
+    <string name="title_ability">Ability</string>
+    <string name="title_evolutiions">Evolutions</string>
+    <string name="title_stats">Stats</string>
+    <string name="title_hp">Hp</string>
+    <string name="title_exp">Experience</string>
+    <string name="title_spd">Speed</string>
+    <string name="title_def">Defence</string>
+    <string name="title_atk">Attack</string>
+    <string name="last_played_game">Last Played Game</string>
+    <string name="my_games">My Games</string>
+    <string name="games">Games</string>
+    <string name="users">Users</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="user_member_since">Member Since:</string>
+    <string name="user_last_login">Last Login:</string>
+    <string name="user_points">Total Points:</string>
+    <string name="user_rank">Site Rank:</string>
+    <string name="user_completion">Average Completion:</string>
+    <string name="user_name">Username:</string>
+    <string name="biography">Biography</string>
+    <string name="achievement_name">Name:</string>
+    <string name="achievement_points">Points:</string>
+    <string name="achievement_progress">Progress:</string>
+    <string name="about">About</string>
+    <string name="achievements">Achievements</string>
+    <string name="game_name">Name:</string>
+    <string name="game_console">Console:</string>
+    <string name="game_developer">Developer:</string>
+    <string name="game_publisher">Publisher:</string>
+    <string name="game_genre">Genre:</string>
+    <string name="game_release_date">Release Date:</string>
+    <string name="gamesString">Games</string>
+    <string name="usersString">Users</string>
+    <string name="rankingString">Ranking</string>
+</resources>

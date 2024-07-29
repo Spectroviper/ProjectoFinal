@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.project.ui.home.HomeFragment"
+        android:label="@string/my_games"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_games"
+        android:name="com.example.project.ui.games.GamesFragment"
+        android:label="@string/games"
+        tools:layout="@layout/fragment_games" >
+        <action
+            android:id="@+id/action_nav_games_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="com.example.project.ui.users.UsersFragment"
+        android:label="@string/users"
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_nav_users_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ranking"
+        android:name="com.example.project.ui.scoreboard.ScoreboardFragment"
+        android:label="@string/rankingString"
+        tools:layout="@layout/fragment_scoreboard" >
+        <action
+            android:id="@+id/action_nav_ranking_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.project.ui.game.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.project.ui.achievement.AchievementFragment"
+        android:label="AchievementFragment"
+        tools:layout="@layout/fragment_achievement"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.project.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+
+</navigation>
