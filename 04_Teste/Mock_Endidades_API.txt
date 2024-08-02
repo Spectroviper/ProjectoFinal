@@ -1,0 +1,68 @@
+CREATING A PERSON
+mutation {
+  createPerson(UserName: "Pedro", Biography: "Hello", MemberSince: "2007-12-03T10:15:30Z", LastLogin: "2007-12-03T10:15:30Z", TotalPoints: 2, AverageCompletion: 2, SiteRank: 2, Image: null) {
+    successfull
+    message
+  }
+}
+
+
+
+CREATING A GAME
+mutation {
+  createGame(GameName: "Ratchet and Clank Deadlocked", About: "Ratchet goes to war", Console: "Playstation2", Developer: "Insomniac", Publisher: "PlaystationStudios", Genre: "Platformer", ReleaseDate: "2007-12-03T10:15:30Z", Image: null) {
+    successfull
+    message
+  }
+}
+
+CREATING AN ACHIEVEMENT
+mutation {
+  createAchievemet(AchievementName: "Go On!", About: "Start the game", RetroPoints: 2, GameID: 1){
+    successfull
+    message
+  }
+}
+
+ADD GAME
+mutation {
+  addGame(UserName: "Pedro", GameName: "Ratchet and Clank Deadlocked") {
+    successfull,
+    message
+  }
+}
+
+GET_GAMES_ACHIEVEMENTS
+query {
+  getGamesAchievements(GameName: "Ratchet and Clank Deadlocked") {
+    id
+  }
+}
+
+GET_PERSON_ACHIEVEMENTS
+query {
+  getPersonAchievements(UserName: "Pedro") {
+    id
+    Achievement {
+      id	
+    }
+  }
+}
+
+GET_PERSON
+query {
+  getPerson(UserName: "Pedro") {
+    UserName
+    PersonAchievements {
+      id
+      Clear
+      UnlockDate
+      TotalCollected
+      UnlockedImage
+      Achievement {
+        id
+        AchievementName
+      }
+    }   
+  }
+}
