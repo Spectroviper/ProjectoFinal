@@ -1,6 +1,7 @@
 package com.example.project
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -11,7 +12,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.generated.GetPersonsQuery
 import com.example.project.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -31,6 +35,24 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        //DEBUG PERPUSES
+        lifecycleScope.launch {
+            try {
+                val response = MyApolloClient.instance.query(GetPersonsQuery("Pedro")).execute()
+                val person = response.data?.getPerson
+
+                if (person != null) {
+                    Log.d("MainActivity", "UserName: ${person.UserName}")
+                    Log.d("MainActivity", "Biography: ${person.Biography}")
+                } else {
+                    Log.d("MainActivity", "Person not found")
+                }
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Error executing GraphQL query", e)
+            }
+        }
+        //END OF DEBUG
     }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

@@ -1,5 +1,8 @@
 package com.example.project.data.mock
 
+import android.util.Log
+import com.example.generated.GetPersonsQuery
+import com.example.project.MyApolloClient
 import com.example.project.data.model.Achievement
 import com.example.project.data.model.Game
 import com.example.project.data.model.User
@@ -8,7 +11,6 @@ import com.example.project.data.model.UserGame
 import com.example.project.R
 
 object AppMock {
-
 
     var users = listOf<User>(
         User(
