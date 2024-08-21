@@ -1,0 +1,37 @@
+query GetPersons($userName: String!) {
+    getPerson(UserName: $userName) {
+		id
+		UserName
+		Biography
+		MemberSince
+		LastLogin
+		TotalPoints
+		AverageCompletion
+		SiteRank
+		Plays{
+			id
+    		GameName
+    		About
+    		Console
+    		Developer
+    		Publisher
+    		Genre
+    		ReleaseDate
+    		Achievements {
+				id
+        		AchievementName
+			}
+		}
+		PersonAchievements{
+			id
+      		Clear
+      		UnlockDate
+      		TotalCollected
+      		UnlockedImage
+      		Achievement {
+        		id
+        		AchievementName
+      		}
+		}
+    }
+}

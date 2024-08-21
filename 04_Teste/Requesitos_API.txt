@@ -4,6 +4,8 @@ UTILIZAR ESTA API.
 #########################################################################################################################
 LIGAÇÂO A BASE DE DADOS
 
+Necessario uma ligação a um servidor MYSQL.
+
 No Ficheiro: API/Server/src/index.ts
 É necessario modificar os valores: password e database da appDataSource para uma base de dados MYSQL porto 80 local.
 ######################################################################################################################### 

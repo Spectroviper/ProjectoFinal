@@ -1,6 +1,7 @@
 buildscript {
     ext {
         kotlin_version = '2.0.0-Beta1'
+        apollo_version = "3.8.2"
     }
     repositories {
         // Make sure that you have the following two repositories
