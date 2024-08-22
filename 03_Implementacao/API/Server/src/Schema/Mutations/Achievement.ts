@@ -11,7 +11,7 @@ export const CREATE_ACHIEVEMENT = {
         About: { type: GraphQLString },
         RetroPoints: { type: GraphQLInt },
         TotalCollectable: { type: GraphQLInt },
-        Image: { type: CustomImage },
+        Image: { type: GraphQLString },
         GameID: { type: GraphQLID }
     },
     async resolve(parent: any, args: any) {
@@ -56,7 +56,7 @@ export const UPDATE_ACHIEVEMENT = {
         NewAbout: { type: GraphQLString },
         NewRetroPoints: { type: GraphQLInt },
         NewTotalCollectable: { type: GraphQLInt },
-        NewImage: { type: CustomImage },
+        NewImage: { type: GraphQLString },
         NewGameID: { type: GraphQLID }
         
     },

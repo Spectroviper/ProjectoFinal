@@ -30,7 +30,7 @@ export class Games extends BaseEntity {
     ReleaseDate!: Date;
 
     @Column({nullable: true})
-    Image!: Buffer;
+    Image!: string;
 
     Players!: Persons[];
 
