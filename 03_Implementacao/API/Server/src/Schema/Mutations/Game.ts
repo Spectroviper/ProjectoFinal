@@ -14,7 +14,7 @@ export const CREATE_GAME = {
         Publisher: { type: GraphQLString },
         Genre: {  type: GraphQLString },
         ReleaseDate: { type: CustomDate},
-        Image: { type: CustomImage }
+        Image: { type: GraphQLString }
     },
     async resolve(parent: any, args: any) {
         const { GameName,
@@ -41,7 +41,7 @@ export const UPDATE_GAME = {
         NewPublisher: { type: GraphQLString },
         NewGenre: { type: GraphQLString },
         NewReleaseDate: { type: CustomDate},
-        NewImage: { type: CustomImage}
+        NewImage: { type: GraphQLString}
         
     },
     async resolve(parent: any, args: any) {

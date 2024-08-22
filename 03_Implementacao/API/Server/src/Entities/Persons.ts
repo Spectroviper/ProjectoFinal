@@ -9,6 +9,9 @@ export class Persons extends BaseEntity {
     id!: number;
 
     @Column()
+    Email!: string;
+
+    @Column()
     UserName!: string;
 
     @Column({nullable: true})
@@ -30,7 +33,7 @@ export class Persons extends BaseEntity {
     SiteRank!: number;
 
     @Column({nullable: true})
-    Image!: Buffer;
+    Image!: string;
 
     @ManyToMany(() => Games, game => game.Players, {nullable: true})
     @JoinTable()

@@ -21,7 +21,7 @@ export class Achievements extends BaseEntity {
     TotalCollectable!: number;
 
     @Column({nullable: true})
-    Image!: Buffer;
+    Image!: string;
 
     @ManyToOne(() => Games, games => games.Achievements)
     Game!: Games;

@@ -1050,7 +1050,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
@@ -1126,7 +1126,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
@@ -1351,7 +1351,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
@@ -1477,7 +1477,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
@@ -1540,7 +1540,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
@@ -1646,7 +1646,7 @@
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
-                                                                                                     "name":  "Image",
+                                                                                                     "name":  "String",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null

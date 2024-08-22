@@ -17,7 +17,7 @@ export const CREATE_PERSON = {
         TotalPoints: { type: GraphQLInt },
         AverageCompletion: {  type: GraphQLInt },
         SiteRank: { type: GraphQLInt},
-        Image: { type: CustomImage }
+        Image: { type: GraphQLString }
     },
     async resolve(parent: any, args: any) {
         const { UserName,
@@ -28,8 +28,6 @@ export const CREATE_PERSON = {
             AverageCompletion,
             SiteRank,
             Image} = args;
-
-        //await saveImageToDatabase(Image);
         
         await Persons.insert(args);
         
@@ -43,7 +41,7 @@ export const UPDATE_PERSON = {
         UserName: { type: GraphQLString },
         NewUserName: { type: GraphQLString},
         NewBiography: { type: GraphQLString },
-        NewImage: { type: CustomImage}
+        NewImage: { type: GraphQLString}
         
     },
     async resolve(parent: any, args: any) {

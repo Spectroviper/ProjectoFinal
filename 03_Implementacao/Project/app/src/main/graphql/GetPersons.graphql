@@ -2,6 +2,7 @@ query GetPersons($userName: String!) {
     getPerson(UserName: $userName) {
 		id
 		UserName
+		Email
 		Biography
 		MemberSince
 		LastLogin

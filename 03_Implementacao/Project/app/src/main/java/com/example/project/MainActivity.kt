@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 Log.e("MainActivity", "Error executing GraphQL query", e)
+            }
         }*/
         //END OF DEBUG
     }
