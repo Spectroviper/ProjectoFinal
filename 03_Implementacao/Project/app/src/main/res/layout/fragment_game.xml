@@ -296,12 +296,11 @@
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical"
                 app:layoutManager="GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_achievements"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:spanCount="1"
-                tools:layout_editor_absoluteX="-8dp"
                 tools:listitem="@layout/item_achievement"
                 tools:spanCount="1" />
 
