@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //DEBUG PERPUSES
-        lifecycleScope.launch {
+        /*lifecycleScope.launch {
             try {
                 val response = MyApolloClient.instance.query(GetPersonsQuery("Pedro")).execute()
                 val person = response.data?.getPerson
@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) {
                 Log.e("MainActivity", "Error executing GraphQL query", e)
-            }
-        }
+        }*/
         //END OF DEBUG
     }
     override fun onSupportNavigateUp(): Boolean {
