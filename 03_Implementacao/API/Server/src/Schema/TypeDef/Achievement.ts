@@ -11,7 +11,7 @@ export const AchievementType: GraphQLObjectType<Achievements> = new GraphQLObjec
         About: { type: GraphQLString },
         RetroPoints: { type: GraphQLInt },
         TotalCollectable: { type: GraphQLInt },
-        Image: { type: CustomImage },
+        Image: { type: GraphQLString },
         Game: { type: GameType }
     })
 })

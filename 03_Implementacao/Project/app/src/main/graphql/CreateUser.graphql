@@ -1,0 +1,6 @@
+mutation CreatePerson($userName: String!, $email: String!, $biography: String, $totalPoints: Int = 0, $averageCompletion: Int = 0, $image: String = "https://static.thenounproject.com/png/4595376-200.png") {
+  createPerson(UserName: $userName, Email: $email,  Biography: $biography, TotalPoints: $totalPoints, AverageCompletion: $averageCompletion, Image: $image) {
+    successfull
+    message
+  }
+}

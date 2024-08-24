@@ -1,7 +1,6 @@
 package com.example.project.data.mock
 
 import android.util.Log
-import com.example.generated.GetPersonsQuery
 import com.example.project.MyApolloClient
 import com.example.project.data.model.Achievement
 import com.example.project.data.model.Game

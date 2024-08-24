@@ -1,0 +1,13 @@
+query GetAllGames() {
+    getAllGames() {
+		id
+    	GameName
+    	About
+    	Console
+    	Developer
+    	Publisher
+    	Genre
+    	ReleaseDate
+        Image
+    }
+}

@@ -12,13 +12,14 @@ export const PersonType: GraphQLObjectType<Persons> = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         UserName: { type: GraphQLString },
+        Email: { type: GraphQLString },
         Biography: { type: GraphQLString },
         MemberSince: { type: CustomDate },
         LastLogin: { type: CustomDate },
         TotalPoints: { type: GraphQLInt },
         AverageCompletion: {  type: GraphQLInt },
         SiteRank: { type: GraphQLInt },
-        Image: { type: CustomImage },
+        Image: { type: GraphQLString },
         Plays: { type: new GraphQLList(GameType) },
         PersonAchievements: { type: new GraphQLList(PersonAchievementType),
             resolve: async (parent: Persons) => {

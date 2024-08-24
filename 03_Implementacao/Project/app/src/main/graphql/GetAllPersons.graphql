@@ -1,0 +1,14 @@
+query GetAllPersons() {
+    getPerson() {
+		id
+		UserName
+		Email
+		Biography
+		MemberSince
+		LastLogin
+		TotalPoints
+		AverageCompletion
+		SiteRank
+        Image
+    }
+}

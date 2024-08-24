@@ -16,7 +16,7 @@ export const GameType: GraphQLObjectType<Games> = new GraphQLObjectType({
         Publisher: { type: GraphQLString },
         Genre: { type: GraphQLString },
         ReleaseDate: { type: CustomDate},
-        Image: { type: CustomImage },
+        Image: { type: GraphQLString },
         Players: { type: new GraphQLList(PersonType) },
         Achievements: { type: new GraphQLList(AchievementType)}
     })
