@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.generated.GetPersonsQuery
+import com.example.generated.GetPersonQuery
 import com.example.project.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         //DEBUG PERPUSES
-        /*lifecycleScope.launch {
+        lifecycleScope.launch {
             try {
-                val response = MyApolloClient.instance.query(GetPersonsQuery("Pedro")).execute()
+                val response = MyApolloClient.instance.query(GetPersonQuery("Pedro")).execute()
                 val person = response.data?.getPerson
 
                 if (person != null) {
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Log.e("MainActivity", "Error executing GraphQL query", e)
             }
-        }*/
+        }
         //END OF DEBUG
     }
     override fun onSupportNavigateUp(): Boolean {

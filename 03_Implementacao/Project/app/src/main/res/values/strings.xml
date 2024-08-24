@@ -65,4 +65,6 @@
     <string name="gamesString">Games</string>
     <string name="usersString">Users</string>
     <string name="rankingString">Ranking</string>
+    <string name="image_url">Image Url:</string>
+    <string name="about_game">About:</string>
 </resources>

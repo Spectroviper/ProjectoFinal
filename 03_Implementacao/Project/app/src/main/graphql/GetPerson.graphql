@@ -1,4 +1,4 @@
-query GetPersons($userName: String!) {
+query GetPerson($userName: String!) {
     getPerson(UserName: $userName) {
 		id
 		UserName
@@ -9,6 +9,7 @@ query GetPersons($userName: String!) {
 		TotalPoints
 		AverageCompletion
 		SiteRank
+		Image
 		Plays{
 			id
     		GameName
@@ -18,6 +19,7 @@ query GetPersons($userName: String!) {
     		Publisher
     		Genre
     		ReleaseDate
+			Image
     		Achievements {
 				id
         		AchievementName

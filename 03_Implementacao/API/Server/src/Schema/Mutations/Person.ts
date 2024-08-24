@@ -11,27 +11,48 @@ export const CREATE_PERSON = {
     type: MessageType,
     args: {
         UserName: { type: GraphQLString },
+        Email: { type: GraphQLString },
         Biography: { type: GraphQLString },
-        MemberSince: { type: CustomDate},
-        LastLogin: { type: CustomDate },
         TotalPoints: { type: GraphQLInt },
         AverageCompletion: {  type: GraphQLInt },
-        SiteRank: { type: GraphQLInt},
         Image: { type: GraphQLString }
     },
     async resolve(parent: any, args: any) {
         const { UserName,
+            Email,
             Biography,
-            MemberSince,
-            LastLogin,
             TotalPoints,
             AverageCompletion,
-            SiteRank,
             Image} = args;
         
-        await Persons.insert(args);
+        const currentDate = new Date();
+
+        const lowestRank = await Persons
+            .createQueryBuilder("persons")
+            .select("MAX(persons.SiteRank)", "max")
+            .getRawOne();
         
-        return {successful: true, message: "PERSON CREATED SUCCESSFULLY"}
+        const newSiteRank = lowestRank.max ? lowestRank.max + 1 : 1;
+
+        
+        const newPerson = new Persons();
+        newPerson.UserName = UserName;
+        newPerson.Email = Email;
+        newPerson.Biography = Biography;
+        newPerson.MemberSince = currentDate;
+        newPerson.LastLogin = currentDate;
+        newPerson.TotalPoints = TotalPoints;
+        newPerson.AverageCompletion = AverageCompletion;
+        newPerson.Image = Image;
+        newPerson.SiteRank = newSiteRank;
+        
+        if (UserName === newPerson.UserName) {
+            await Persons.insert(newPerson);
+            return {successful: true, message: "PERSON CREATED SUCCESSFULLY"}
+        } else{
+            throw new Error("PERSON DOES NOT HAVE THE RIGHT USERNAME!");
+        }
+
     }
 };
 

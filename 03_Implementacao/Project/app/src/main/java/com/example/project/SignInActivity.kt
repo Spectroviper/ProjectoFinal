@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.generated.GetPersonsQuery
 import com.example.project.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch

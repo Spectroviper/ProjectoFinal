@@ -1,6 +1,6 @@
 CREATING A PERSON
 mutation {
-  createPerson(UserName: "Pedro", Biography: "Hello", MemberSince: "2007-12-03T10:15:30Z", LastLogin: "2007-12-03T10:15:30Z", TotalPoints: 2, AverageCompletion: 2, SiteRank: 2, Image: null) {
+  createPerson(UserName: "Pedro", Email: "pedro@gmail.com" Biography: "Hello", TotalPoints: 2, AverageCompletion: 2, Image: null) {
     successfull
     message
   }
