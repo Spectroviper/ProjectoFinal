@@ -79,6 +79,32 @@ export const UPDATE_PERSON = {
     }
 };
 
+export const SIGN_OUT = {
+    type: MessageType,
+    args: {
+        Email: { type: GraphQLString }
+    },
+    async resolve(parent: any, args: any) {
+        const {Email} = args;
+        const person = await Persons.findOne({where: {Email: Email}, relations: ['Plays', 'PersonAchievements', 'PersonAchievements.Achievement']});
+        const personEmail = person?.Email;
+
+        if(person){
+            if(personEmail === Email) {
+                await Persons.update({Email: Email},{LastLogin: new Date()});
+                return {successful: true, message: "PERSON UPDATED SUCCESSFULLY"}
+            }
+            else{
+                throw new Error("PERSON DOES NOT HAVE THE RIGHT USER_NAME!");
+            }
+        }
+        else{
+            throw new Error("PERSON NOT FOUND!");
+        }
+        
+    }
+};
+
 export const ADD_GAME = {
     type: MessageType,
     args: {
@@ -184,7 +210,7 @@ export const REMOVE_GAME = {
 };
 
 
-export const UNLOCK_ACHIEVEMENT = {
+export const TOGGLE_UNLOCK_ACHIEVEMENT = {
     type: MessageType,
     args: {
         UserName: { type: GraphQLString },
@@ -194,6 +220,7 @@ export const UNLOCK_ACHIEVEMENT = {
         const { UserName, personAchievementId } = args;
         const person = await Persons.findOne({where: {UserName: UserName}, relations: ['PersonAchievements']});
         const personPersonName = person?.UserName;
+        
 
         if(person){
             if (UserName == personPersonName) {
@@ -203,67 +230,45 @@ export const UNLOCK_ACHIEVEMENT = {
                     const personAchievementsIds = person.PersonAchievements.map(personAchievement => personAchievement.id);
 
                     if(personAchievementsIds.includes(personAchievementToUnlock.id)) {
+                        let personTotalPoints = person?.TotalPoints;
+                        const personAchievementToUnlockRetroPoints = personAchievementToUnlock.Achievement.RetroPoints;
                         if(personAchievementToUnlock.Clear == false) {
-                            personAchievementToUnlock.Clear = true;
+                            personTotalPoints += personAchievementToUnlockRetroPoints;
+                            await Persons.update({UserName: UserName},{TotalPoints: personTotalPoints});
 
+                            const persons = await Persons.find({ order: { TotalPoints: "DESC" } });
+                            let rank = 1;
+                            for (const person of persons) {
+                                person.SiteRank = rank;
+                                await person.save();
+                                rank++;
+                            }
+
+                            personAchievementToUnlock.Clear = true;
+                            personAchievementToUnlock.UnlockDate = new Date();
                             await personAchievementToUnlock.save();
 
                             return {successful: true, message: "ACHIEVEMENT UNLOCKED!"}
                         }
-                        else{
-                            throw new Error("ACHIEVEMENT IS ALREADY UNLOCKED!");
-                        }
-                    }
-                    else{
-                        throw new Error("PERSON ACHIEVEMENT NOT INCLUDED IN THE REQUESTED PERSONS ACHIEVEMENTS LIST!");
-                    }
-                }
-                else{
-                    throw new Error("PERSON ACHIEVEMENT NOT FOUND");
-                }
-            }
-            else{
-                throw new Error("PERSON DOES NOT HAVE THE RIGHT ACHIEVEMENT_NAME!");
-            }
-        }
-        else{
-            throw new Error("COULD NOT FIND PERSON");
-        }
-        
-        
-    }
-};
+                        if(personAchievementToUnlock.Clear == true){
+                            personTotalPoints -= personAchievementToUnlockRetroPoints;
+                            await Persons.update({UserName: UserName},{TotalPoints: personTotalPoints});
 
+                            const persons = await Persons.find({ order: { TotalPoints: "DESC" } });
+                            let rank = 1;
+                            for (const person of persons) {
+                                person.SiteRank = rank;
+                                await person.save();
+                                rank++;
+                            }
 
-export const LOCK_ACHIEVEMENT = {
-    type: MessageType,
-    args: {
-        UserName: { type: GraphQLString },
-        personAchievementId: { type: GraphQLID }
-    },
-    async resolve(parent: any, args: any) {
-        const { UserName, personAchievementId } = args;
-        const person = await Persons.findOne({where: {UserName: UserName}, relations: ['PersonAchievements']});
-        const personPersonName = person?.UserName;
-
-        if(person){
-            if (UserName == personPersonName) {
-                const personAchievementToUnlock = await PersonAchievements.findOne({where: {id: personAchievementId}})
-
-                if(personAchievementToUnlock) {
-                    const personAchievementsIds = person.PersonAchievements.map(personAchievement => personAchievement.id);
-
-                    if(personAchievementsIds.includes(personAchievementToUnlock.id)) {
-                        if(personAchievementToUnlock.Clear == true) {
                             personAchievementToUnlock.Clear = false;
-
+                            //personAchievementToUnlock.UnlockDate = null;
                             await personAchievementToUnlock.save();
-                            
+
+
                             return {successful: true, message: "ACHIEVEMENT LOCKED!"}
                         }
-                        else{
-                            throw new Error("ACHIEVEMENT IS ALREADY LOCKED!");
-                        }
                     }
                     else{
                         throw new Error("PERSON ACHIEVEMENT NOT INCLUDED IN THE REQUESTED PERSONS ACHIEVEMENTS LIST!");
@@ -284,7 +289,6 @@ export const LOCK_ACHIEVEMENT = {
         
     }
 };
-
 
 export const DELETE_PERSON = {
     type: MessageType,

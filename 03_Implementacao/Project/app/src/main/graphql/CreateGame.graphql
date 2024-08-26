@@ -1,0 +1,6 @@
+mutation CreateGame($gameName: String!, $about: String, $console: String, $developer: String, $publisher: String, $genre: String, $releaseDate: Date, $image: String = "https://cdn.pixabay.com/photo/2016/06/29/14/12/joystick-1486898_640.png") {
+  createGame(GameName: $gameName, Console: $console, Developer: $developer, Publisher: $publisher, Genre: $genre, ReleaseDate: $releaseDate, Image: $image) {
+    successfull
+    message
+  }
+}

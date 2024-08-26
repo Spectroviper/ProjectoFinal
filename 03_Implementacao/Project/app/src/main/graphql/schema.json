@@ -110,6 +110,29 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
+                                                                       "name":  "signIn",
+                                                                       "description":  null,
+                                                                       "args":  [
+                                                                                    {
+                                                                                        "name":  "Email",
+                                                                                        "description":  null,
+                                                                                        "type":  {
+                                                                                                     "kind":  "SCALAR",
+                                                                                                     "name":  "String",
+                                                                                                     "ofType":  null
+                                                                                                 },
+                                                                                        "defaultValue":  null
+                                                                                    }
+                                                                                ],
+                                                                       "type":  {
+                                                                                    "kind":  "OBJECT",
+                                                                                    "name":  "Person",
+                                                                                    "ofType":  null
+                                                                                },
+                                                                       "isDeprecated":  false,
+                                                                       "deprecationReason":  null
+                                                                   },
+                                                                   {
                                                                        "name":  "getAllGames",
                                                                        "description":  null,
                                                                        "args":  [
@@ -1201,7 +1224,7 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "unlockAchievement",
+                                                                       "name":  "toggleUnlockAchievement",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {
@@ -1234,25 +1257,15 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "lockAchievement",
+                                                                       "name":  "signOut",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {
-                                                                                        "name":  "UserName",
+                                                                                        "name":  "Email",
                                                                                         "description":  null,
                                                                                         "type":  {
                                                                                                      "kind":  "SCALAR",
                                                                                                      "name":  "String",
-                                                                                                     "ofType":  null
-                                                                                                 },
-                                                                                        "defaultValue":  null
-                                                                                    },
-                                                                                    {
-                                                                                        "name":  "personAchievementId",
-                                                                                        "description":  null,
-                                                                                        "type":  {
-                                                                                                     "kind":  "SCALAR",
-                                                                                                     "name":  "ID",
                                                                                                      "ofType":  null
                                                                                                  },
                                                                                         "defaultValue":  null
