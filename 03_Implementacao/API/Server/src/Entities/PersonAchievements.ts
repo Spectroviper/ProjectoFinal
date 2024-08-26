@@ -17,9 +17,6 @@ export class PersonAchievements extends BaseEntity {
     @Column({nullable: true})
     TotalCollected!: string;
 
-    @Column({nullable: true})
-    UnlockedImage!: Buffer;
-
     @ManyToOne(() => Achievements, achievements => achievements.PersonAchievements)
     Achievement!: Achievements;
 

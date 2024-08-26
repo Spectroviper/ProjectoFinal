@@ -31,6 +31,32 @@ export const GET_PERSON = {
     }
 }
 
+export const SIGN_IN = {
+    type: PersonType,
+    args: {
+        Email: { type: GraphQLString }
+    },
+    async resolve(parent: any, args: any) {
+        const {Email} = args;
+        const person = await Persons.findOne({where: {Email: Email}, relations: ['Plays', 'PersonAchievements', 'PersonAchievements.Achievement']});
+        const personEmail = person?.Email;
+
+        if(person){
+            if(personEmail === Email) {
+                person.LastLogin = new Date()
+                return person;
+            }
+            else{
+                throw new Error("PERSON DOES NOT HAVE THE RIGHT USER_NAME!");
+            }
+        }
+        else{
+            throw new Error("PERSON NOT FOUND!");
+        }
+        
+    }
+}
+
 export const GET_PERSONS_GAMES = {
     type: new GraphQLList(GameType),
     args: {
@@ -81,39 +107,4 @@ export const GET_PERSONS_ACHIEVEMENTS = {
             throw new Error("PERSON DOES NOT HAVE THE RIGHT USERNAME!");
         }
     }
-}
-
-export const GET_PERSONS_TOTAL_SCORE = {
-    type: GraphQLInt,
-    args: {
-        UserName: { type: GraphQLString },
-    },
-    async resolve(parent: any, args: any) {
-        const {UserName} = args
-        const person = await Persons.findOne({where: {UserName: UserName}, relations: ['PersonAchievements', 'PersonAchievements.Achievement']})
-        const personUserName = person?.UserName;
-    
-        if (UserName === personUserName) {
-            const personAchievements = person?.PersonAchievements || [];
-            let totalScore = 0
-            if(personAchievements) {
-                personAchievements.forEach(personAchievement => {
-                    if(personAchievement.Clear){
-                        let achievement = personAchievement.Achievement;
-                        let achievementScore = achievement.RetroPoints;
-                        totalScore += achievementScore;
-                    }
-                });
-                return totalScore;
-            }
-            else{
-                totalScore = 0;
-                return totalScore;
-            }
-                
-        }
-        else{
-            throw new Error("PERSON DOES NOT HAVE THE RIGHT USERNAME!");
-        }
-    }        
 }
