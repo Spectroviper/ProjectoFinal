@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.project.AppDomain
 import com.example.project.R
 import com.example.project.data.model.Game
 import com.example.project.data.model.User
@@ -44,17 +45,23 @@ class UsersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel.getAllUsers().observe(viewLifecycleOwner) {
             val allUsers: List<User> = it
-            binding?.usersRecyclerView?.adapter = UsersAdapter(allUsers,
-                itemClickedListener = {user->
-                    val bundle = bundleOf(
-                        "user" to user
-                    )
-                    findNavController()
-                        .navigate(
-                            R.id.action_nav_users_to_profileFragment,
-                            bundle,
-                            null
+            binding?.usersRecyclerView?.adapter = UsersAdapter(
+                allUsers,
+                itemClickedListener = { user ->
+                    val user = user as? User
+                    if (user?.id == homeViewModel.getUserId()) {
+                        val bundle = bundleOf("user" to user)
+                        findNavController().navigate(
+                            R.id.action_nav_users_to_myProfileFragment,
+                            bundle
                         )
+                    } else {
+                        val bundle = bundleOf("user" to user)
+                        findNavController().navigate(
+                            R.id.action_nav_users_to_profileFragment,
+                            bundle
+                        )
+                    }
                 }, view.context
             )
         }

@@ -174,7 +174,7 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "getGameByConsole",
+                                                                       "name":  "getGamesByConsole",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {
@@ -201,7 +201,7 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "getGameByPublisher",
+                                                                       "name":  "getGamesByPublisher",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {
@@ -228,7 +228,7 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "getGameByGenre",
+                                                                       "name":  "getGamesByGenre",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {
@@ -255,7 +255,7 @@
                                                                        "deprecationReason":  null
                                                                    },
                                                                    {
-                                                                       "name":  "getGameByDeveloper",
+                                                                       "name":  "getGamesByDeveloper",
                                                                        "description":  null,
                                                                        "args":  [
                                                                                     {

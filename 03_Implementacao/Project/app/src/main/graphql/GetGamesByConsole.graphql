@@ -1,0 +1,13 @@
+query GetGamesByConsole($console: String!) {
+    getGamesByConsole(Console: $console) {
+		id
+    	GameName
+    	About
+    	Console
+    	Developer
+    	Publisher
+    	Genre
+    	ReleaseDate
+        Image
+    }
+}

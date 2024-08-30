@@ -19,10 +19,10 @@ const RootQuery = new GraphQLObjectType({
         //GAME
         getAllGames: GET_ALL_GAMES,
         getGame: GET_GAME,
-        getGameByConsole: GET_GAMES_BY_CONSOLE,
-        getGameByPublisher: GET_GAMES_BY_PUBLISHER,
-        getGameByGenre: GET_GAMES_BY_GENRE,
-        getGameByDeveloper: GET_GAMES_BY_DEVELOPER,
+        getGamesByConsole: GET_GAMES_BY_CONSOLE,
+        getGamesByPublisher: GET_GAMES_BY_PUBLISHER,
+        getGamesByGenre: GET_GAMES_BY_GENRE,
+        getGamesByDeveloper: GET_GAMES_BY_DEVELOPER,
         getGamesAchievements: GET_GAMES_ACHIEVEMENTS,
         //ACHIEVEMENT
         getAllAchievements: GET_ALL_ACHIEVEMENTS,

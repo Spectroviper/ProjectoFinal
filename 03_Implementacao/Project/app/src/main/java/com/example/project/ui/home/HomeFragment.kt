@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
                     )
                     findNavController()
                         .navigate(
-                            R.id.action_nav_home_to_gameFragment,
+                            R.id.action_nav_home_to_gameAddedFragment,
                             bundle,
                             null
                         )

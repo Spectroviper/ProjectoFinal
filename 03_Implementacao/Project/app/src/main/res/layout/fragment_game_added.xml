@@ -51,11 +51,12 @@
                 tools:src="" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arcade_classic"
                 android:gravity="left"
                 android:text="@string/game_name"
-                android:fontFamily="@font/arcade_classic"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -67,11 +68,12 @@
                 app:layout_constraintVertical_bias="0.064" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arcade_classic"
                 android:gravity="left"
                 android:text="@string/game_console"
-                android:fontFamily="@font/arcade_classic"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -99,11 +101,12 @@
                 app:layout_constraintVertical_bias="0.001" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView3"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arcade_classic"
                 android:gravity="left"
                 android:text="@string/game_publisher"
-                android:fontFamily="@font/arcade_classic"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -115,11 +118,12 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView4"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/arcade_classic"
                 android:gravity="left"
                 android:text="@string/game_genre"
-                android:fontFamily="@font/arcade_classic"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -259,16 +263,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="@font/arcade_classic"
                 android:text="@string/about"
+                android:fontFamily="@font/arcade_classic"
                 android:textAlignment="textStart"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_game" />
+                app:layout_constraintTop_toBottomOf="@id/remove_game" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/editText_about_game"
@@ -292,20 +295,20 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/achievements"
                 android:fontFamily="@font/arcade_classic"
+                android:text="@string/achievements"
                 android:textAlignment="textStart"
                 android:textSize="33sp"
-                app:layout_constraintBottom_toTopOf="@id/create_achievement"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editText_about_game" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/achievementsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:fadeScrollbars="false"
                 android:padding="6dp"
@@ -314,67 +317,27 @@
                 app:layoutManager="GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/create_achievement"
+                app:layout_constraintTop_toBottomOf="@+id/text_achievements"
+                app:layout_constraintVertical_bias="1.0"
                 app:spanCount="1"
                 tools:listitem="@layout/item_achievement"
                 tools:spanCount="1" />
 
             <Button
-                android:id="@+id/add_game"
+                android:id="@+id/remove_game"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:backgroundTint="@color/green"
-                android:fontFamily="@font/arcade_classic"
-                android:text="Add Game"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.064"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/game_releaseDate" />
-
-            <Button
-                android:id="@+id/edit_game"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
-                android:fontFamily="@font/arcade_classic"
-                android:text="Edit Game"
-                app:layout_constraintBottom_toTopOf="@+id/delete_game"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.935"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/game_releaseDate"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <Button
-                android:id="@+id/delete_game"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/arcade_classic"
-                android:text="Delete Game"
+                android:text="Remove Game"
                 app:layout_constraintBottom_toTopOf="@+id/text_about_game"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.935"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_game"
-                app:layout_constraintVertical_bias="0.041" />
-
-            <Button
-                android:id="@+id/create_achievement"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/green"
-                android:text="Create Achievement"
-                android:fontFamily="@font/arcade_classic"
-                app:layout_constraintBottom_toTopOf="@+id/achievementsRecyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_achievements"
-                app:layout_constraintVertical_bias="0.518" />
+                app:layout_constraintTop_toBottomOf="@id/game_releaseDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

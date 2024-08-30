@@ -53,6 +53,10 @@ class GamesFragment : Fragment() {
                 }, view.context
             )
         }
+        binding.createGame.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_nav_games_to_createGameFragment)
+        }
     }
 
 

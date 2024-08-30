@@ -13,4 +13,11 @@ class UsersViewModel : ViewModel() {
     {
         return _appDomain.getAllUsers()
     }
+    fun getUserId(): Int{
+        return _appDomain.getUserId()
+    }
+
+    fun getSpecificUser(): Int{
+        return _appDomain.getSpecificUser()
+    }
 }

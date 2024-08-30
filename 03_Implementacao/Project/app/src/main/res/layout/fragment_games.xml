@@ -84,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/green"
+        android:fontFamily="@font/arcade_classic"
         android:text="Create Game"
         app:layout_constraintBottom_toTopOf="@+id/gamesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"

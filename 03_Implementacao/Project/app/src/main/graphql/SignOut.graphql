@@ -1,0 +1,6 @@
+mutation SignOut($email: String!) {
+  signOut(Email: $email) {
+    successfull
+    message
+  }
+}

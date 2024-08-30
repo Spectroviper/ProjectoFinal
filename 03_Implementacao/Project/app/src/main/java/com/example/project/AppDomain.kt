@@ -10,7 +10,7 @@ import com.example.project.data.model.User
 
 class AppDomain
 {
-    var userId: Int = 1
+    val id: Int = 1
 
     fun getAllUsers() : LiveData<List<User>>
     {
@@ -66,7 +66,7 @@ class AppDomain
     fun getUserGames(): MutableList<Int> {
         val indexes = mutableListOf<Int>()
         for(i in AppMock.userGame){
-            if(userId==i.userId){
+            if(id==i.userId){
                 indexes.add(i.gameId)
             }
         }
@@ -75,7 +75,7 @@ class AppDomain
     fun getLastGameIndex(): MutableList<Int> {
         val indexes = mutableListOf<Int>()
         for(i in AppMock.userGame){
-            if(userId==i.userId && i.lastPlayedGame==true){
+            if(id==i.userId && i.lastPlayedGame==true){
                 indexes.add(i.gameId)
             }
         }
@@ -115,8 +115,22 @@ class AppDomain
         return MutableLiveData(
             AppMock.users.find { it.id == userId })
     }
-    fun defineUserId(newUserId: Int){
+    /*fun defineUserId(newUserId: Int){
         userId = newUserId
+    }*/
+    fun getUserId(): Int{
+        return id
+    }
+
+    fun getSpecificUser(): Int{
+        var finalIndex: Int = 0
+        var users = mutableListOf<User>()
+        for (i in users){
+            if (i.id == id){
+                finalIndex = users.indexOf(i)
+            }
+        }
+        return finalIndex
     }
     /*
     fun getPokemonsByRegion(region: PokemonRegion): LiveData<List<Pokemon>>
