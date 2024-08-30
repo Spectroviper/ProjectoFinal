@@ -170,7 +170,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/delete_achievement" />
+                app:layout_constraintTop_toBottomOf="@+id/lock_achievement" />
 
             <EditText
                 android:id="@+id/editText_about"
@@ -188,33 +188,30 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/delete_achievement"
+                android:id="@+id/unlock_achievement"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/green"
+                android:fontFamily="@font/arcade_classic"
+                android:text="Unlock Achievement"
+                app:layout_constraintBottom_toTopOf="@+id/lock_achievement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/achievement_progress" />
+
+            <Button
+                android:id="@+id/lock_achievement"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/arcade_classic"
-                android:text="Delete Achievement"
+                android:text="Lock Achievement"
                 app:layout_constraintBottom_toTopOf="@+id/text_about"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_achievement" />
-
-            <Button
-                android:id="@+id/edit_achievement"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:backgroundTint="@color/green"
-                android:fontFamily="@font/arcade_classic"
-                android:text="Edit Achievement"
-                app:layout_constraintBottom_toTopOf="@+id/delete_achievement"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/achievement_progress"
-                app:layout_constraintVertical_bias="0.453" />
+                app:layout_constraintTop_toBottomOf="@+id/unlock_achievement" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

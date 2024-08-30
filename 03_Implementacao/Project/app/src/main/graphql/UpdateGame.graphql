@@ -1,4 +1,4 @@
-mutation UpdateGame($gameName: String!, $newGameName: String, $newAbout: String, $newConsole: String, $newDeveloper: String, $newPublisher: String, $newGenre: String, $newReleaseDate: Date, $newImage: String = "https://cdn.pixabay.com/photo/2016/06/29/14/12/joystick-1486898_640.png") {
+mutation UpdateGame($gameName: String!, $newGameName: String, $newAbout: String, $newConsole: String, $newDeveloper: String, $newPublisher: String, $newGenre: String, $newReleaseDate: Date, $newImage: String) {
   updateGame(GameName: $gameName, NewConsole: $newConsole, NewDeveloper: $newDeveloper, NewPublisher: $newPublisher, NewGenre: $newGenre, NewReleaseDate: $newReleaseDate, NewImage: $newImage) {
     successfull
     message

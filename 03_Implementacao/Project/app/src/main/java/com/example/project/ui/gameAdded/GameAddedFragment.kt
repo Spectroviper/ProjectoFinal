@@ -1,8 +1,7 @@
-package com.example.project.ui.game
+package com.example.project.ui.gameAdded
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +13,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.project.R
 import com.example.project.data.model.Achievement
 import com.example.project.data.model.Game
+import com.example.project.databinding.FragmentGameAddedBinding
 import com.example.project.databinding.FragmentGameBinding
+import com.example.project.ui.game.GameAdapter
+import com.example.project.ui.game.GameViewModel
 
-class GameFragment: Fragment() {
-    private var _binding: FragmentGameBinding? = null
-    private val viewModel: GameViewModel by viewModels()
+class GameAddedFragment : Fragment() {
+
+    private var _binding: FragmentGameAddedBinding? = null
+    private val viewModel: GameAddedViewModel by viewModels()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,7 +29,7 @@ class GameFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGameBinding.inflate(inflater, container, false)
+        _binding = FragmentGameAddedBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //viewModel!!.initViewMode((activity?.application as PokemonApplication).pkContainer.pokemonRepository)
         return root
@@ -39,39 +42,24 @@ class GameFragment: Fragment() {
         binding.game = game
         viewModel.getListAchievementsByGame(game.id).observe(viewLifecycleOwner, Observer {
             val achievements: List<Achievement> = it
-            binding?.achievementsRecyclerView?.adapter = GameAdapter(achievements,
+            binding?.achievementsRecyclerView?.adapter = GameAddedAdapter(achievements,
                 itemClickedListener = { achievement ->
                     val bundle = bundleOf(
                         "achievement" to achievement
                     )
                     findNavController()
                         .navigate(
-                            R.id.action_gameFragment_to_achievementFragment,
+                            R.id.action_gameAddedFragment_to_achievementAddedFragment,
                             bundle,
                             null
                         )
                 }, view.context
             )
-
         })
-        binding.createAchievement.setOnClickListener {
-            findNavController().navigate(
-            R.id.action_gameFragment_to_createAchievementFragment)
-        }
-        binding.editGame.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_gameFragment_to_editGameFragment)
-        }
-        binding.addGame.setOnClickListener {
-            //Add Game Code Here
-        }
-        binding.deleteGame.setOnClickListener {
-            //Add Delete Code Here
-        }
-}
+    }
 
-override fun onDestroyView() {
-super.onDestroyView()
-_binding = null
-}
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

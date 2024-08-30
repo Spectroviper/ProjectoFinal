@@ -10,9 +10,10 @@
         android:name="com.example.project.ui.home.HomeFragment"
         android:label="@string/my_games"
         tools:layout="@layout/fragment_home" >
+
         <action
-            android:id="@+id/action_nav_home_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/action_nav_home_to_gameAddedFragment"
+            app:destination="@id/gameAddedFragment" />
     </fragment>
 
     <fragment
@@ -23,6 +24,9 @@
         <action
             android:id="@+id/action_nav_games_to_gameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_nav_games_to_createGameFragment"
+            app:destination="@id/createGameFragment" />
     </fragment>
 
     <fragment
@@ -33,6 +37,9 @@
         <action
             android:id="@+id/action_nav_users_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_nav_users_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
     </fragment>
 
     <fragment
@@ -53,17 +60,76 @@
         <action
             android:id="@+id/action_gameFragment_to_achievementFragment"
             app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_createAchievementFragment"
+            app:destination="@id/createAchievementFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_editGameFragment"
+            app:destination="@id/editGameFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/achievementFragment"
         android:name="com.example.project.ui.achievement.AchievementFragment"
         android:label="AchievementFragment"
-        tools:layout="@layout/fragment_achievement"/>
+        tools:layout="@layout/fragment_achievement">
+        <action
+            android:id="@+id/action_achievementFragment_to_editAchievementFragment"
+            app:destination="@id/editAchievementFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.project.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/gameAddedFragment"
+        android:name="com.example.project.ui.gameAdded.GameAddedFragment"
+        android:label="GameAddedFragment" >
+        <action
+            android:id="@+id/action_gameAddedFragment_to_achievementAddedFragment"
+            app:destination="@id/achievementAddedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/achievementAddedFragment"
+        android:name="com.example.project.ui.achievementAdded.AchievementAddedFragment"
+        android:label="AchievementAddedFragment" />
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.example.project.ui.myProfile.MyProfileFragment"
+        android:label="MyProfileFragment" >
+        <action
+            android:id="@+id/action_myProfileFragment_to_signInActivity"
+            app:destination="@id/signInActivity" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="com.example.project.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
+    <fragment
+        android:id="@+id/createGameFragment"
+        android:name="com.example.project.ui.createGame.CreateGameFragment"
+        android:label="CreateGameFragment" />
+    <fragment
+        android:id="@+id/createAchievementFragment"
+        android:name="com.example.project.ui.createAchievement.CreateAchievementFragment"
+        android:label="CreateAchievementFragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.project.ui.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/editGameFragment"
+        android:name="com.example.project.ui.editGame.EditGameFragment"
+        android:label="EditGameFragment" />
+    <fragment
+        android:id="@+id/editAchievementFragment"
+        android:name="com.example.project.ui.editAchievement.EditAchievementFragment"
+        android:label="EditAchievementFragment" />
 
 </navigation>
