@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.035"
                 app:paletteCard="@{profileGameCardView}"
-                app:paletteImage="@{Integer.toString(game.imageUrl)}"
+                app:paletteImage="@{game.imageUrl}"
                 tools:src="" />
 
             <androidx.appcompat.widget.AppCompatTextView

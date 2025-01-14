@@ -20,7 +20,7 @@ import com.example.project.ui.game.GameViewModel
 
 class GameAddedFragment : Fragment() {
 
-    private var _binding: FragmentGameAddedBinding? = null
+    /*private var _binding: FragmentGameAddedBinding? = null
     private val viewModel: GameAddedViewModel by viewModels()
     private val binding get() = _binding!!
 
@@ -61,5 +61,5 @@ class GameAddedFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 }

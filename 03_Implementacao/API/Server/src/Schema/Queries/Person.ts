@@ -15,18 +15,18 @@ export const GET_ALL_PERSONS = {
 export const GET_PERSON = {
     type: PersonType,
     args: {
-        UserName: { type: GraphQLString }
+        Email: { type: GraphQLString }
     },
     async resolve(parent: any, args: any) {
-        const {UserName} = args;
-        const person = await Persons.findOne({where: {UserName: UserName}, relations: ['Plays', 'PersonAchievements', 'PersonAchievements.Achievement']});
-        const personUserName = person?.UserName;
+        const {Email} = args;
+        const person = await Persons.findOne({where: {Email: Email}, relations: ['Plays', 'PersonAchievements', 'PersonAchievements.Achievement']});
+        const personEmail = person?.Email;
 
-        if(personUserName === UserName) {
+        if(personEmail === Email) {
             return person;
         }
         else{
-            throw new Error("PERSON DOES NOT HAVE THE RIGHT USER_NAME!");
+            throw new Error("PERSON DOES NOT HAVE THE RIGHT EMAIL!");
         }
     }
 }

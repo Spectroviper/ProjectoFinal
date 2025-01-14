@@ -7,9 +7,9 @@ import com.example.project.AppDomain
 import com.example.project.data.model.Game
 
 class GamesViewModel : ViewModel() {
-    private val _appDomain = AppDomain()
+    /*private val _appDomain = AppDomain()
     fun getAllGames(): LiveData<List<Game>>
     {
         return _appDomain.getAllGames()
-    }
+    }*/
 }

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.project.R
 import com.example.project.data.model.Game
 import com.example.project.databinding.FragmentHomeBinding
+import okhttp3.internal.wait
 
 class HomeFragment : Fragment() {
 
@@ -37,9 +38,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.getMyGames().observe(viewLifecycleOwner) {
-            val myGames: List<Game> = it
-            binding?.myGamesRecyclerView?.adapter = HomeAdapter(myGames,
+
+        homeViewModel.fetchAllMyGames()
+
+        homeViewModel.myGames.observe(viewLifecycleOwner) { myGames ->
+            binding.myGamesRecyclerView.adapter = HomeAdapter(
+                myGames,
                 itemClickedListener = {game->
                     val bundle = bundleOf(
                         "game" to game

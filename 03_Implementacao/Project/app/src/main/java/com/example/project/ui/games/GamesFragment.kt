@@ -16,7 +16,7 @@ import com.example.project.databinding.FragmentGamesBinding
 
 class GamesFragment : Fragment() {
 
-    private var _homeViewModel: GamesViewModel? = null
+    /*private var _homeViewModel: GamesViewModel? = null
     private var _binding: FragmentGamesBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel get() = _homeViewModel!!
@@ -63,5 +63,5 @@ class GamesFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 }

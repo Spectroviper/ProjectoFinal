@@ -16,7 +16,7 @@ import com.example.project.ui.users.UsersViewModel
 
 class ScoreboardFragment : Fragment() {
 
-    private var _homeViewModel: ScoreboardViewModel? = null
+    /*private var _homeViewModel: ScoreboardViewModel? = null
     private var _binding: FragmentScoreboardBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel get() = _homeViewModel!!
@@ -59,5 +59,5 @@ class ScoreboardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 }

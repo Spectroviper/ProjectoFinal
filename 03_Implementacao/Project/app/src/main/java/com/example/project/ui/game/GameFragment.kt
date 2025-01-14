@@ -17,7 +17,7 @@ import com.example.project.data.model.Game
 import com.example.project.databinding.FragmentGameBinding
 
 class GameFragment: Fragment() {
-    private var _binding: FragmentGameBinding? = null
+    /*private var _binding: FragmentGameBinding? = null
     private val viewModel: GameViewModel by viewModels()
     private val binding get() = _binding!!
 
@@ -73,5 +73,5 @@ class GameFragment: Fragment() {
 override fun onDestroyView() {
 super.onDestroyView()
 _binding = null
-}
+}*/
 }

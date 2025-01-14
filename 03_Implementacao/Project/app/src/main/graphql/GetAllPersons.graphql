@@ -1,5 +1,5 @@
 query GetAllPersons() {
-    getPerson() {
+    getAllPersons() {
 		id
 		UserName
 		Email

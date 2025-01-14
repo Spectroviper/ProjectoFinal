@@ -2,10 +2,15 @@ package com.example.project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.generated.CreateUserMutation
+import com.example.generated.SignInQuery
 import com.example.project.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -34,6 +39,17 @@ class SignUpActivity : AppCompatActivity() {
 
                     firebaseAuth.createUserWithEmailAndPassword(username, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
+                            val userEmail = firebaseAuth.currentUser?.email
+
+                            if (userEmail != null) {
+                                lifecycleScope.launch {
+                                    try {
+                                        val response = MyApolloClient.instance.mutation(CreateUserMutation("NewUser", userEmail)).execute()
+                                    } catch (e: Exception) {
+                                        Log.e("API", "Error executing CreateUserGraphQL query", e)
+                                    }
+                                }
+                            }
                             val intent = Intent(this, SignInActivity::class.java)
                             startActivity(intent)
                         } else {

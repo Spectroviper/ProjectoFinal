@@ -1,20 +1,18 @@
 package com.example.project.data.mock
 
-import android.util.Log
-import com.example.project.MyApolloClient
 import com.example.project.data.model.Achievement
 import com.example.project.data.model.Game
-import com.example.project.data.model.User
 import com.example.project.data.model.UserAchievement
 import com.example.project.data.model.UserGame
 import com.example.project.R
 
 object AppMock {
 
-    var users = listOf<User>(
+    /*var users = listOf<User>(
         User(
             1,
             "Kanto",
+            "t"
             R.drawable.bug,
             1,
             40,
@@ -100,9 +98,9 @@ object AppMock {
             "10/03/2009",
             "I like playing games"
         ),
-    )
+    )*/
 
-    var games = listOf<Game>(
+    /*var games = listOf<Game>(
         Game(
             1,
             "Pokemon Fire Red",
@@ -138,7 +136,7 @@ object AppMock {
             "23/09/2002",
             "The game follows master thief Sly Cooper and his gang, Bentley the Turtle and Murray the Hippo, as they seek out criminals known as the Fiendish Five to recover the pages of the \"Thievius Raccoonus\", the book of the accumulation of all of Sly's ancestors' thieving moves."
         ),
-    )
+    )*/
 
     var achievements = listOf<Achievement>(
         Achievement(
