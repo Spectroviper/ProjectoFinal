@@ -2,10 +2,15 @@ package com.example.project
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.generated.SignInQuery
 import com.example.project.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
 
@@ -32,8 +37,27 @@ class SignInActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(username, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+                        val userEmail = firebaseAuth.currentUser?.email
+
+                        if (userEmail != null) {
+                            lifecycleScope.launch {
+                                try {
+                                    val deferredUser = async {
+                                        MyApolloClient.instance.query(SignInQuery(userEmail)).execute()
+                                    }
+                                    val response = deferredUser.await()
+                                    val user = response.data?.signIn
+                                    SessionManager.setCurrentUser(user)
+                                    val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                                    startActivity(intent)
+                                    Log.d("API", "User Settled" + SessionManager.currentUser.toString())
+
+                                } catch (e: Exception) {
+                                    Log.e("API", "Error executing SignInGraphQL query", e)
+                                }
+                            }
+                        }
+
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 

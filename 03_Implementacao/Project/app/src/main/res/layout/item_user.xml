@@ -45,7 +45,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:paletteCard="@{userCardView}"
-                app:paletteImage="@{Integer.toString(user.imageUrl)}"
+                app:paletteImage="@{user.imageUrl}"
                 tools:src="" />
 
             <androidx.appcompat.widget.AppCompatTextView

@@ -6,9 +6,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Game(
-    var id: Int,
+    var id: String,
     var gameName: String,
-    @DrawableRes val imageUrl: Int,
+    @DrawableRes val imageUrl: String,
     var console: String,
     var developer: String,
     var publisher: String,

@@ -43,13 +43,14 @@ class UsersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.getAllUsers().observe(viewLifecycleOwner) {
-            val allUsers: List<User> = it
-            binding?.usersRecyclerView?.adapter = UsersAdapter(
-                allUsers,
+
+        homeViewModel.fetchAllUsers()
+
+        homeViewModel.users.observe(viewLifecycleOwner) { users ->
+            binding.usersRecyclerView.adapter = UsersAdapter(
+                users,
                 itemClickedListener = { user ->
-                    val user = user as? User
-                    if (user?.id == homeViewModel.getUserId()) {
+                    if (user.id == homeViewModel.getUserId()) {
                         val bundle = bundleOf("user" to user)
                         findNavController().navigate(
                             R.id.action_nav_users_to_myProfileFragment,
@@ -62,7 +63,8 @@ class UsersFragment : Fragment() {
                             bundle
                         )
                     }
-                }, view.context
+                },
+                view.context
             )
         }
     }

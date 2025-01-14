@@ -1,6 +1,4 @@
 import { GraphQLID, GraphQLInt, GraphQLString } from "graphql";
-import { CustomDate } from "../CustomTypes/Date";
-import { CustomImage } from "../CustomTypes/Image";
 import { MessageType } from "../TypeDef/Messages";
 import { Persons } from "../../Entities/Persons";
 import { Games } from "../../Entities/Games";

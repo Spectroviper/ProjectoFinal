@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="game"
             type="com.example.project.data.model.Game" />
@@ -45,7 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:paletteCard="@{gameCardView}"
-                app:paletteImage="@{Integer.toString(game.imageUrl)}"
+                app:paletteImage="@{game.imageUrl}"
                 tools:src="" />
 
             <androidx.appcompat.widget.AppCompatTextView
