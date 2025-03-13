@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1234
+      MYSQL_DATABASE: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin1234
+      MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    platform: linux/amd64
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    env_file:
+      - ./Server/.env
+    volumes:
+      - ./Server:/usr/src/app
+      - /usr/src/app/node_modules
+    container_name: backend
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+    command: npm run dev
+    platform: linux/amd64
+
+volumes:
+  mysql-data:
+    driver: local
+  node_modules:

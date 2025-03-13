@@ -2,27 +2,34 @@ import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import { schema } from "./Schema";
 import cors from 'cors';
+import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 import { Persons } from './Entities/Persons';
 import { Games } from './Entities/Games';
 import { Achievements } from './Entities/Achievements';
 import { PersonAchievements } from './Entities/PersonAchievements';
 
+dotenv.config();
+
 const main = async () => {
 
     const appDataSource = new DataSource({
         type: "mysql",
-        host: "127.0.0.1",
-        username: "root",
+        host: "database",
+        username: "admin",
         port: 3306,
-        password: "Mortadecesamo1",
-        database: "finalproject",
+        password: "admin1234",
+        database: "admin",
         logging: true,
         synchronize: false,
         entities: [Persons, Games, Achievements, PersonAchievements],
     });
 
-    await appDataSource.initialize();
+    await appDataSource.initialize().then(() =>{
+        console.log("Database ON");
+    }).catch((error) =>{
+        console.error("Database", error); 
+    });
 
     const app = express()
     app.use(cors())
@@ -32,8 +39,10 @@ const main = async () => {
         graphiql: true
     }))
 
-    app.listen(3001, () =>{
-        console.log("SERVER RUNNING ON PORT 3001");
+    const PORT = process.env.PORT ?? 3000;
+
+    app.listen(PORT, () =>{
+        console.log(`SERVER RUNNING ON PORT ${PORT}`);
     });
 
 }
