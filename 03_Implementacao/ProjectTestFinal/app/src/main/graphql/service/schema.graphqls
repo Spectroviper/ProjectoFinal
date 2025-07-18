@@ -11,16 +11,12 @@ type RootQuery {
   getUserByUserId(UserId: ID): User
   "Returns all UserGames for a given user"
   getUserUserGames(UserId: ID): [UserGame]
-  "Returns all UserChallengeAhievements for a given user"
-  getUserUserChallengeAchievements(UserId: ID): [UserChallengeAchievement]
   "Returns all UserAhievements for a given user"
   getUserUserAchievements(UserId: ID): [UserAchievement]
   "Get all Users in the Database ordered by TotalPoints"
   getAllUsersByTotalPoints: [User]
   "Search all the Friends a User is related to"
   getAllUserFriends(UserId: ID): [User]
-  "Get all Users participating in a specific Challenge"
-  getAllUsersInChallenge(ChallengeId: ID): [User]
   "Get all Users NOT participating in a specific Challenge"
   getAllUsersNotInChallenge(ChallengeId: ID): [User]
   "Search Users in the Database by UserName"
@@ -33,8 +29,6 @@ type RootQuery {
   getGameByGameId(GameId: ID): Game
   "Search Games by GameName, Console, Developer, Publisher, and Genre"
   searchGames(GameName: String, Console: String, Developer: String, Publisher: String, Genre: String): [Game]
-  "Get all Achievements in the Database"
-  getAllAchievements: [Achievement]
   "Get a certain Achievement in the Database"
   getAchievementByAchievementId(AchievementId: ID): Achievement
   "Get all Achievements that are NOT in a specific Challenge"
@@ -61,10 +55,6 @@ type RootQuery {
   getUserChallengeAchievementByUserChallengeAchievementId(UserChallengeAchievementId: ID): UserChallengeAchievement
   "Returns a ChallengeAchievement with its related Achievement"
   getChallengeAchievementByChallengeAchievementId(ChallengeAchievementId: ID): ChallengeAchievement
-  "Get all the Invites to a Friends List a certain User has received"
-  getAllFriendInvitesByReceiverId(RecieverId: ID): [Friend]
-  "Get all the Invites to a Friends Group a certain User has sent"
-  getAllFriendInvitesBySenderId(SenderId: ID): [Friend]
   "Get all pending and rejected friend invites for a given User"
   getAllFriendInvites(UserId: ID): [Friend]
   "Search friends by UserName for a given UserId"
