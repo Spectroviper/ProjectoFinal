@@ -1,0 +1,6 @@
+mutation AddGame($userId: ID, $gameId: ID) {
+  addGame(UserId: $userId, GameId: $gameId) {
+    message
+    successfull
+  }
+}

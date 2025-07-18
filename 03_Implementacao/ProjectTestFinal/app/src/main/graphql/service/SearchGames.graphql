@@ -1,0 +1,8 @@
+query SearchGames($gameName: String, $console: String, $developer: String, $publisher: String, $genre: String) {
+  searchGames(GameName: $gameName, Console: $console, Developer: $developer, Publisher: $publisher, Genre: $genre) {
+    GameId
+    GameName
+    Image
+    Console
+  }
+}

@@ -1,0 +1,6 @@
+mutation DeleteGame($gameId: ID) {
+  deleteGame(GameId: $gameId) {
+    message
+    successfull
+  }
+}

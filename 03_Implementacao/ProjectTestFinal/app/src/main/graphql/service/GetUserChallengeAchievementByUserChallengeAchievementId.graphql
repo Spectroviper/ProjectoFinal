@@ -1,0 +1,18 @@
+query GetUserChallengeAchievementByUserChallengeAchievementId($userChallengeAchievementId: ID) {
+  getUserChallengeAchievementByUserChallengeAchievementId(UserChallengeAchievementId: $userChallengeAchievementId) {
+    UserChallengeAchievementId
+    Clear
+    TotalCollected
+    UnlockDate
+    Achievement {
+      About
+      AchievementId
+      AchievementName
+      Image
+      TotalCollectable
+    }
+    User {
+      UserId
+    }
+  }
+}

@@ -1,0 +1,6 @@
+mutation RejectChallengeInvite($challengeInviteId: ID, $userId: ID) {
+  rejectChallengeInvite(ChallengeInviteId: $challengeInviteId, UserId: $userId) {
+    message
+    successfull
+  }
+}

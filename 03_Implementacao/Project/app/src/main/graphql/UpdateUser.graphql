@@ -1,6 +1,0 @@
-mutation UpdateUser($userName: String!, $newUserName: String, $newBiography: String, $newImage: String) {
-  updatePerson(UserName: $userName, NewUserName: $newUserName, NewBiography: $newBiography NewImage: $newImage) {
-    successfull
-    message
-  }
-}

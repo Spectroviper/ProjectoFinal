@@ -1,0 +1,6 @@
+mutation InviteFriend($senderId: ID, $receiverId: ID) {
+  inviteFriend(SenderId: $senderId, ReceiverId: $receiverId) {
+    message
+    successfull
+  }
+}

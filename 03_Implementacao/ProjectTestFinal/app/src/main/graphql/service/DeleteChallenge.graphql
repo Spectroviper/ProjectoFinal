@@ -1,0 +1,6 @@
+mutation DeleteChallenge($challengeId: ID) {
+  deleteChallenge(ChallengeId: $challengeId) {
+    message
+    successfull
+  }
+}

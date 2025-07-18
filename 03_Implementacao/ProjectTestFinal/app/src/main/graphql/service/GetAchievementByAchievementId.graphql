@@ -1,0 +1,10 @@
+query GetAchievementByAchievementId($achievementId: ID) {
+  getAchievementByAchievementId(AchievementId: $achievementId) {
+    AchievementId
+    AchievementName
+    About
+    CreatedBy
+    Image
+    TotalCollectable
+  }
+}

@@ -1,0 +1,6 @@
+mutation CreateChallengeAchievement($challengeId: ID, $achievementId: ID) {
+  createChallengeAchievement(ChallengeId: $challengeId, AchievementId: $achievementId) {
+    message
+    successfull
+  }
+}

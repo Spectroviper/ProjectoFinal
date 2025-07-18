@@ -1,0 +1,254 @@
+schema {
+  query: RootQuery
+  mutation: Mutation
+}
+"Custom scalar type for representing dates"
+scalar Date
+type RootQuery {
+  "Get all Users in the Database except the one with the given UserId"
+  getAllUsers(UserId: ID): [User]
+  "Get a User by ID with only Challenge-related information"
+  getUserByUserId(UserId: ID): User
+  "Returns all UserGames for a given user"
+  getUserUserGames(UserId: ID): [UserGame]
+  "Returns all UserChallengeAhievements for a given user"
+  getUserUserChallengeAchievements(UserId: ID): [UserChallengeAchievement]
+  "Returns all UserAhievements for a given user"
+  getUserUserAchievements(UserId: ID): [UserAchievement]
+  "Get all Users in the Database ordered by TotalPoints"
+  getAllUsersByTotalPoints: [User]
+  "Search all the Friends a User is related to"
+  getAllUserFriends(UserId: ID): [User]
+  "Get all Users participating in a specific Challenge"
+  getAllUsersInChallenge(ChallengeId: ID): [User]
+  "Get all Users NOT participating in a specific Challenge"
+  getAllUsersNotInChallenge(ChallengeId: ID): [User]
+  "Search Users in the Database by UserName"
+  searchUsers(UserName: String): [User]
+  "Search all the Games a User is related to"
+  searchUserGames(UserId: ID, GameName: String): [UserGame]
+  "Get all Games in the database"
+  getAllGames: [Game]
+  "Get a certain Game in the Database"
+  getGameByGameId(GameId: ID): Game
+  "Search Games by GameName, Console, Developer, Publisher, and Genre"
+  searchGames(GameName: String, Console: String, Developer: String, Publisher: String, Genre: String): [Game]
+  "Get all Achievements in the Database"
+  getAllAchievements: [Achievement]
+  "Get a certain Achievement in the Database"
+  getAchievementByAchievementId(AchievementId: ID): Achievement
+  "Get all Achievements that are NOT in a specific Challenge"
+  getAllAchievementsNotInAChallenge(ChallengeId: ID): [Achievement]
+  "Search Achievements by name and game, excluding those already in a specific challenge"
+  searchAchievements(AchievementName: String, GameId: ID, ChallengeId: ID): [Achievement]
+  "Returns a UserGame with its related UserAchievements"
+  getUserGameByUserGameId(UserGameId: ID): UserGame
+  "Returns a UserAchievement from the BD"
+  getUserAchievementByUserAchievementId(UserAchievementId: ID): UserAchievement
+  "Get all Challenge Invites where the given User is involved (requests or invites)"
+  getAllUserChallengeInvites(UserId: ID): [ChallengeInvite]
+  "Get all Challenge Invites related to a specific Challenge"
+  getAllChallengeInvitesByChallengeId(ChallengeId: ID): [ChallengeInvite]
+  "Get all Challenges the User can join from the database"
+  getAllJoinableChallenges(UserId: ID): [Challenge]
+  "Get a certain Challenge from the database with its relations"
+  getChallengeByChallengeId(ChallengeId: ID): Challenge
+  "Search Challenges by ChallengeName and Type"
+  searchChallenges(ChallengeName: String, Type: String): [Challenge]
+  "Gets a specific UserChallenge with its achievements"
+  getUserChallengeByUserChallengeId(UserChallengeId: ID): DetailedUserChallenge
+  "Returns a UserChallengeAchievement from the DB"
+  getUserChallengeAchievementByUserChallengeAchievementId(UserChallengeAchievementId: ID): UserChallengeAchievement
+  "Returns a ChallengeAchievement with its related Achievement"
+  getChallengeAchievementByChallengeAchievementId(ChallengeAchievementId: ID): ChallengeAchievement
+  "Get all the Invites to a Friends List a certain User has received"
+  getAllFriendInvitesByReceiverId(RecieverId: ID): [Friend]
+  "Get all the Invites to a Friends Group a certain User has sent"
+  getAllFriendInvitesBySenderId(SenderId: ID): [Friend]
+  "Get all pending and rejected friend invites for a given User"
+  getAllFriendInvites(UserId: ID): [Friend]
+  "Search friends by UserName for a given UserId"
+  searchFriends(UserId: ID, UserName: String): [Friend]
+}
+"A User in the Application"
+type User {
+  UserId: ID
+  UserName: String
+  Email: String
+  Biography: String
+  MemberSince: Date
+  LastLogin: Date
+  TotalPoints: Int
+  AverageCompletion: Int
+  Image: String
+  UserGames: [UserGame]
+  UserAchievements: [UserAchievement]
+  UserChallengeAchievements: [UserChallengeAchievement]
+  UserChallenges: [UserChallenge]
+  ChallengeInvites: [ChallengeInvite]
+  FriendSenders: [Friend]
+  FriendReceivers: [Friend]
+}
+type UserGame {
+  UserGameId: ID
+  AverageCompletion: Float
+  User: User
+  Game: Game
+}
+type Game {
+  GameId: ID
+  GameName: String
+  About: String
+  Console: String
+  Developer: String
+  Publisher: String
+  Genre: String
+  ReleaseDate: Date
+  Image: String
+  CreatedBy: String
+  UserGames: [UserGame]
+  Achievements: [Achievement]
+}
+type Achievement {
+  AchievementId: ID
+  AchievementName: String
+  About: String
+  TotalCollectable: Int
+  Image: String
+  CreatedBy: String
+  Game: Game
+  ChallengeAchievements: [ChallengeAchievement]
+  UserAchievements: [UserAchievement]
+}
+type ChallengeAchievement {
+  ChallengeAchievementId: ID
+  Achievement: Achievement
+  Challenge: Challenge
+}
+type Challenge {
+  ChallengeId: ID
+  ChallengeName: String
+  Type: String
+  IsStarted: Boolean
+  StartDate: Date
+  EndDate: Date
+  Image: String
+  CreatedBy: String
+  UserChallenges: [UserChallenge]
+  ChallengeAchievements: [ChallengeAchievement]
+  ChallengeInvites: [ChallengeInvite]
+}
+type UserChallenge {
+  UserChallengeId: ID
+  IsLeader: Boolean
+  AverageCompletion: Float
+  User: User
+  Challenge: Challenge
+}
+type ChallengeInvite {
+  ChallengeInviteId: ID
+  State: String
+  Date: Date
+  IsRequest: Boolean
+  User: User
+  Challenge: Challenge
+}
+type UserAchievement {
+  UserAchievementId: ID
+  Clear: Boolean
+  UnlockDate: Date
+  TotalCollected: Int
+  Achievement: Achievement
+  User: User
+}
+type UserChallengeAchievement {
+  UserChallengeAchievementId: ID
+  Clear: Boolean
+  UnlockDate: Date
+  TotalCollected: Int
+  Achievement: Achievement
+  User: User
+  Challenge: Challenge
+}
+type Friend {
+  FriendId: ID
+  State: String
+  Date: Date
+  UserSender: User
+  UserReceiver: User
+}
+type DetailedUserChallenge {
+  UserChallenge: UserChallenge
+  UserChallengeAchievements: [UserChallengeAchievement]
+}
+type Mutation {
+  "Create a User in the Database"
+  createUser(UserName: String, Email: String, Biography: String, Image: String): Message
+  "Delete a User and its related information from the Database"
+  deleteUser(UserId: ID): Message
+  "Update the information of a User in the Database"
+  updateUser(UserId: ID, NewUserName: String, NewBiography: String, NewImage: String): Message
+  "Logs in a user and returns their basic profile and UserGames"
+  logIn(Email: String): User
+  "Creates a Game in the Database"
+  createGame(GameName: String, About: String, Console: String, Developer: String, Publisher: String, Genre: String, CreatedBy: String, ReleaseDate: Date, Image: String): Message
+  "Deletes a Game and its related information from the Database"
+  deleteGame(GameId: ID): Message
+  "Updates a Game's information in the Database"
+  updateGame(GameId: ID, NewGameName: String, NewAbout: String, NewConsole: String, NewDeveloper: String, NewPublisher: String, NewGenre: String, NewReleaseDate: Date, NewImage: String): Message
+  "Adds a relation between a User and a Game"
+  addGame(UserId: ID, GameId: ID): Message
+  "Deletes a relation between a User and a Game"
+  removeGame(UserId: ID, GameId: ID): Message
+  "Creates an Achievement in the Database"
+  createAchievement(AchievementName: String, About: String, TotalCollectable: Int, CreatedBy: String, Image: String, GameID: ID): Message
+  "Deletes an Achievement and its related information from the Database"
+  deleteAchievement(AchievementId: ID): Message
+  "Updates the information of an Achievement in the Database"
+  updateAchievement(AchievementId: ID, NewAchievementName: String, NewAbout: String, NewTotalCollectable: Int, NewImage: String): Message
+  "Locks or Unlocks an Achievement depending if its Clear attribute was previously True or False"
+  lockUnlockAchievement(UserId: ID, UserAchievementId: ID): Message
+  "Creates a Challenge Achievement in the Database"
+  createChallengeAchievement(ChallengeId: ID, AchievementId: ID): Message
+  "Deletes a Challenge Achievement and its related UserChallengeAchievements"
+  deleteChallengeAchievement(ChallengeAchievementId: ID): Message
+  "Toggles Clear state of a UserChallengeAchievement and updates average completion"
+  lockUnlockChallengeAchievement(UserId: ID, UserChallengeAchievementId: ID): Message
+  "Creates an invite or a request for a Challenge"
+  inviteUserToChallenge(UserId: ID, ChallengeId: ID, IsRequest: Boolean): Message
+  "Accepts a challenge invite or request"
+  acceptChallengeInvite(ChallengeInviteId: ID, UserId: ID): Message
+  "Rejects a challenge invite or request"
+  rejectChallengeInvite(ChallengeInviteId: ID, UserId: ID): Message
+  "Deletes a Challenge Invitation only if it is Accepted or Rejected from the Database"
+  deleteChallengeInvite(ChallengeInviteId: ID): Message
+  "Creates a Challenge in the Database"
+  createChallenge(UserId: ID, ChallengeName: String, Type: String, Image: String): Message
+  "Updates a Challenge's information in the Database"
+  updateChallenge(ChallengeId: ID, NewChallengeName: String, NewType: String, NewImage: String): Message
+  "Delete a Challenge and its related information from the Database"
+  deleteChallenge(ChallengeId: ID): Message
+  "Starts a Challenge and creates ChallengeAchievements for all its members"
+  startChallenge(UserId: ID, ChallengeId: ID): Message
+  "Ends a challenge, updates users' scores"
+  endChallenge(ChallengeId: ID): Message
+  "Sends a friend request from one user to another"
+  inviteFriend(SenderId: ID, ReceiverId: ID): Message
+  "Accepts a pending friend request"
+  acceptFriendInvite(FriendId: ID): Message
+  "Rejects a pending friend request"
+  rejectFriendInvite(FriendId: ID): Message
+  "Deletes a friend invite (Accepted, or Rejected)"
+  deleteFriendInvite(FriendId: ID): Message
+}
+type Message {
+  successfull: Boolean
+  message: String
+}
+"Exposes a URL that specifies the behavior of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behavior of this scalar."
+    url: String!
+  ) on SCALAR
+"Indicates exactly one field must be supplied and this field must not be `null`."
+directive @oneOf on INPUT_OBJECT

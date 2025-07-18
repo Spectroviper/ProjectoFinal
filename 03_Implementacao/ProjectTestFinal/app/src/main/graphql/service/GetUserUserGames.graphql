@@ -1,0 +1,12 @@
+query GetUserUserGames($userId: ID) {
+  getUserUserGames(UserId: $userId) {
+    UserGameId
+    AverageCompletion
+    Game {
+      GameId
+      GameName
+      Console
+      Image
+    }
+  }
+}

@@ -1,3 +1,9 @@
 Server/node_modules
+Server/dist
 docker-compose.yml
+docker-compose.prod.yml
 Dockerfile
+Dockerfile.backend
+Dockerfile.backend.prod
+dockerignore
+package.json

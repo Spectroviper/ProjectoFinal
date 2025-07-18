@@ -1,0 +1,6 @@
+mutation LockUnlockAchievement($userId: ID, $userAchievementId: ID) {
+  lockUnlockAchievement(UserId: $userId, UserAchievementId: $userAchievementId) {
+    message
+    successfull
+  }
+}

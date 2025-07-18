@@ -1,0 +1,6 @@
+mutation UpdateUser($userId: ID, $newUserName: String, $newBiography: String, $newImage: String) {
+  updateUser(UserId: $userId, NewUserName: $newUserName, NewBiography: $newBiography, NewImage: $newImage) {
+    message
+    successfull
+  }
+}

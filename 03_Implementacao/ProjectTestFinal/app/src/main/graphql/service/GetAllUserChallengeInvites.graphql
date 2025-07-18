@@ -1,0 +1,16 @@
+query GetAllUserChallengeInvites($userId: ID) {
+  getAllUserChallengeInvites(UserId: $userId) {
+    ChallengeInviteId
+    State
+    IsRequest
+    Date
+    Challenge {
+      ChallengeId
+      ChallengeName
+    }
+    User {
+      UserId
+      UserName
+    }
+  }
+}

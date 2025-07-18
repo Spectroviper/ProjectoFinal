@@ -1,6 +1,0 @@
-mutation RemoveGame($userName: String!, $gameName: String!) {
-  removeGame(UserName: $userName, GameName: $gameName) {
-    successfull
-    message
-  }
-}

@@ -1,0 +1,28 @@
+query GetUserGameByUserGameId($userGameId: ID) {
+  getUserGameByUserGameId(UserGameId: $userGameId) {
+    UserGameId
+    AverageCompletion
+    Game {
+      GameId
+      GameName
+      Genre
+      Image
+      Publisher
+      Developer
+      CreatedBy
+      Console
+      About
+      Achievements {
+        AchievementId
+        About
+        AchievementName
+        Image
+        TotalCollectable
+        UserAchievements {
+          TotalCollected
+          UserAchievementId
+        }
+      }
+    }
+  }
+}

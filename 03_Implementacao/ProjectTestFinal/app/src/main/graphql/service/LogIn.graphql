@@ -1,0 +1,23 @@
+mutation LogIn($email: String) {
+  logIn(Email: $email) {
+    UserId
+    UserName
+    TotalPoints
+    MemberSince
+    LastLogin
+    Image
+    Biography
+    AverageCompletion
+    Email
+    UserGames {
+      AverageCompletion
+      UserGameId
+      Game {
+        GameId
+        GameName
+        Console
+        Image
+      }
+    }
+  }
+}

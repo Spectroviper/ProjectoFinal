@@ -1,13 +1,25 @@
-FROM node:20
+FROM node:latest
 
+# Set the working directory inside the container
 WORKDIR /usr/src/app
 
+# Update package list and install CA certificates and curl
+#RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+
+#solve issue: UNABLE_TO_GET_ISSUER_CERT_LOCALLY
+RUN npm config set strict-ssl false
+
+# Copy package.json and package-lock.json to the container
 COPY Server/package*.json ./
 
-RUN npm install
+# Install the app dependencies
+RUN npm install --legacy-peer-deps
 
+# Copy the rest of the backend files into the container
 COPY Server/. .
 
+# Expose the port the application will run on
 EXPOSE 3000
 
+# Command to run the app
 CMD ["npm", "run", "dev"]

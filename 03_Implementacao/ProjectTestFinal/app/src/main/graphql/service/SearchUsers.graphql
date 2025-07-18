@@ -1,0 +1,8 @@
+query SearchUsers($userName: String) {
+  searchUsers(UserName: $userName) {
+    UserId
+    UserName
+    Image
+    TotalPoints
+  }
+}

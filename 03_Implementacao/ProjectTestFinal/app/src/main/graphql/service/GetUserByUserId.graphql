@@ -1,0 +1,21 @@
+query GetUserByUserId($userId: ID) {
+  getUserByUserId(UserId: $userId) {
+    UserId
+    UserName
+    TotalPoints
+    MemberSince
+    Biography
+    Email
+    Image
+    LastLogin
+    AverageCompletion
+    UserChallenges {
+      UserChallengeId
+      Challenge {
+        ChallengeId
+        ChallengeName
+        Image
+      }
+    }
+  }
+}

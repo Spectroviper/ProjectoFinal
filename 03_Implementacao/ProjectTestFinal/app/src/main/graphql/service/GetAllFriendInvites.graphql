@@ -1,0 +1,15 @@
+query GetAllFriendInvites($userId: ID) {
+  getAllFriendInvites(UserId: $userId) {
+    FriendId
+    State
+    Date
+    UserReceiver {
+      UserId
+      UserName
+    }
+    UserSender {
+      UserId
+      UserName
+    }
+  }
+}

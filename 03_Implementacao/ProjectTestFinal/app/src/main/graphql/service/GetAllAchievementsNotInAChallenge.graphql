@@ -1,0 +1,8 @@
+query GetAllAchievementsNotInAChallenge($challengeId: ID) {
+  getAllAchievementsNotInAChallenge(ChallengeId: $challengeId) {
+    AchievementId
+    AchievementName
+    About
+    Image
+  }
+}

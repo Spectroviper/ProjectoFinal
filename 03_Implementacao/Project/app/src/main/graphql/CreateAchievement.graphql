@@ -1,6 +1,0 @@
-mutation CreateAchievement($achievementName: String!, $about: String, $retroPoints: Int = 1, $totalCollectable: Int, $image: String = "https://cdn-icons-png.flaticon.com/512/5337/5337751.png", $gameId: ID!) {
-  createAchievemet(AchievementName: $achievementName, About: $about,  RetroPoints: $retroPoints, TotalCollectable: $totalCollectable, Image: $image, GameID: $gameId) {
-    successfull
-    message
-  }
-}

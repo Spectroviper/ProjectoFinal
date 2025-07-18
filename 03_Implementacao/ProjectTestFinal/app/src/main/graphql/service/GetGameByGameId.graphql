@@ -1,0 +1,20 @@
+query GetGameByGameId($gameId: ID) {
+  getGameByGameId(GameId: $gameId) {
+    GameId
+    GameName
+    Genre
+    Developer
+    Console
+    About
+    Publisher
+    ReleaseDate
+    Image
+    CreatedBy
+    Achievements {
+      AchievementId
+      AchievementName
+      About
+      Image
+    }
+  }
+}
