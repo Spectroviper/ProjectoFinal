@@ -1,0 +1,6 @@
+mutation CreateChallenge($userId: ID, $challengeName: String, $image: String, $type: String) {
+  createChallenge(UserId: $userId, ChallengeName: $challengeName, Image: $image, Type: $type) {
+    message
+    successfull
+  }
+}

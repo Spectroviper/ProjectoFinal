@@ -1,0 +1,8 @@
+query GetAllGames {
+  getAllGames {
+    GameId
+    GameName
+    Console
+    Image
+  }
+}

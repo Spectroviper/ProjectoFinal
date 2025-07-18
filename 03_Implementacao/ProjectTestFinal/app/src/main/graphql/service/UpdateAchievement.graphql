@@ -1,0 +1,6 @@
+mutation UpdateAchievement($achievementId: ID, $newAchievementName: String, $newAbout: String, $newTotalCollectable: Int, $newImage: String) {
+  updateAchievement(AchievementId: $achievementId, NewAchievementName: $newAchievementName, NewAbout: $newAbout, NewTotalCollectable: $newTotalCollectable, NewImage: $newImage) {
+    message
+    successfull
+  }
+}

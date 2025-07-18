@@ -1,0 +1,6 @@
+mutation DeleteFriendInvite($friendId: ID) {
+  deleteFriendInvite(FriendId: $friendId) {
+    message
+    successfull
+  }
+}

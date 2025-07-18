@@ -1,0 +1,6 @@
+mutation StartChallenge($userId: ID, $challengeId: ID) {
+  startChallenge(UserId: $userId, ChallengeId: $challengeId) {
+    message
+    successfull
+  }
+}

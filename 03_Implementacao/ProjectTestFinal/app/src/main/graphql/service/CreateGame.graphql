@@ -1,0 +1,6 @@
+mutation CreateGame($gameName: String, $about: String, $console: String, $developer: String, $publisher: String, $genre: String, $createdBy: String, $releaseDate: Date, $image: String) {
+  createGame(GameName: $gameName, About: $about, Console: $console, Developer: $developer, Publisher: $publisher, Genre: $genre, CreatedBy: $createdBy, ReleaseDate: $releaseDate, Image: $image) {
+    message
+    successfull
+  }
+}

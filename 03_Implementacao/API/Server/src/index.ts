@@ -1,43 +1,55 @@
-import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
-import { schema } from "./Schema";
+import express, { Request, Response } from 'express';
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
-import { DataSource } from 'typeorm';
-import { Persons } from './Entities/Persons';
-import { Games } from './Entities/Games';
-import { Achievements } from './Entities/Achievements';
-import { PersonAchievements } from './Entities/PersonAchievements';
+import path from 'path';
+import { schema } from './Schema';
+import { upload } from './middleware/upload';
+import { appDataSource } from './DataSource';
 
 const main = async () => {
-
-    const appDataSource = new DataSource({
-        type: "mysql",
-        host: "127.0.0.1",
-        username: "root",
-        port: 3306,
-        password: "Mortadecesamo1",
-        database: "finalproject",
-        logging: true,
-        synchronize: false,
-        entities: [Persons, Games, Achievements, PersonAchievements],
-    });
-
+  try {
     await appDataSource.initialize();
+    console.log('Data Source has been initialized!');
 
-    const app = express()
-    app.use(cors())
-    app.use(express.json())
-    app.use("/graphql", graphqlHTTP({
-        schema,
-        graphiql: true
-    }))
+    const app = express();
 
-    app.listen(3001, () =>{
-        console.log("SERVER RUNNING ON PORT 3001");
+    app.use(cors());
+
+    app.use(express.json());
+
+    app.use('/Images', express.static(path.join(__dirname, 'Images')));
+
+    app.post('/Images', upload.single('file'), (req: Request, res: Response) => {
+      if (!req.file) {
+        res.status(400).send('No file uploaded.');
+        return;
+      }
+      res.json({ filePath: `/Images/${req.file.filename}` });
     });
 
-}
+    const server = new ApolloServer({ schema });
 
-main().catch((err) => {
-    console.log(err);
-});
+    await server.start();
+
+    app.use(
+      '/graphql',
+      cors(),
+      express.json(),
+      expressMiddleware(server, {
+        context: async ({ req }) => ({ req }),
+      })
+    );
+
+    const PORT = process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT) : 3000;
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}/graphql`);
+      console.log(`📁 File uploads served at http://localhost:${PORT}/Images`);
+    });
+  } catch (error) {
+    console.error('Error during Data Source initialization or server start:', error);
+  }
+};
+
+main();

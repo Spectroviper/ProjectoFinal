@@ -1,0 +1,8 @@
+query SearchAchievements($achievementName: String, $gameId: ID, $challengeId: ID) {
+  searchAchievements(AchievementName: $achievementName, GameId: $gameId, ChallengeId: $challengeId) {
+    AchievementId
+    AchievementName
+    About
+    Image
+  }
+}

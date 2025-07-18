@@ -1,0 +1,7 @@
+query GetAllJoinableChallenges($userId: ID) {
+  getAllJoinableChallenges(UserId: $userId) {
+    ChallengeId
+    ChallengeName
+    Image
+  }
+}

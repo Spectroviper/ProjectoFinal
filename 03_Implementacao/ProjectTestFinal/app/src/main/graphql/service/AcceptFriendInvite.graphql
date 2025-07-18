@@ -1,0 +1,6 @@
+mutation AcceptFriendInvite($friendId: ID) {
+  acceptFriendInvite(FriendId: $friendId) {
+    message
+    successfull
+  }
+}

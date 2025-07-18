@@ -1,0 +1,6 @@
+mutation UpdateChallenge($challengeId: ID, $newChallengeName: String, $newType: String, $newImage: String) {
+  updateChallenge(ChallengeId: $challengeId, NewChallengeName: $newChallengeName, NewType: $newType, NewImage: $newImage) {
+    message
+    successfull
+  }
+}

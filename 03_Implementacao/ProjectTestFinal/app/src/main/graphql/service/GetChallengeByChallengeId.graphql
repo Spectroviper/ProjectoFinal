@@ -1,0 +1,30 @@
+query GetChallengeByChallengeId($challengeId: ID) {
+  getChallengeByChallengeId(ChallengeId: $challengeId) {
+    ChallengeId
+    ChallengeName
+    CreatedBy
+    EndDate
+    Image
+    StartDate
+    Type
+    IsStarted
+    UserChallenges{
+      UserChallengeId
+      User{
+        UserId
+        UserName
+        Image
+      }
+    }
+    ChallengeAchievements {
+      ChallengeAchievementId
+      Achievement {
+        About
+        AchievementId
+        AchievementName
+        Image
+        TotalCollectable
+      }
+    }
+  }
+}

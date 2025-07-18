@@ -1,0 +1,12 @@
+query GetChallengeAchievementByChallengeAchievementId($challengeAchievementId: ID) {
+  getChallengeAchievementByChallengeAchievementId(ChallengeAchievementId: $challengeAchievementId) {
+    ChallengeAchievementId
+    Achievement {
+      AchievementId
+      AchievementName
+      About
+      Image
+      TotalCollectable
+    }
+  }
+}

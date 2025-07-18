@@ -1,0 +1,6 @@
+mutation CreateUser($userName: String, $email: String, $biography: String, $image: String) {
+  createUser(UserName: $userName, Email: $email, Biography: $biography, Image: $image) {
+    message
+    successfull
+  }
+}

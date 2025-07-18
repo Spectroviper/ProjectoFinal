@@ -1,0 +1,6 @@
+mutation UpdateGame($gameId: ID, $newGameName: String, $newAbout: String, $newConsole: String, $newDeveloper: String, $newPublisher: String, $newGenre: String, $newReleaseDate: Date, $newImage: String) {
+  updateGame(GameId: $gameId, NewGameName: $newGameName, NewAbout: $newAbout, NewConsole: $newConsole, NewDeveloper: $newDeveloper, NewPublisher: $newPublisher, NewGenre: $newGenre, NewReleaseDate: $newReleaseDate, NewImage: $newImage) {
+    message
+    successfull
+  }
+}

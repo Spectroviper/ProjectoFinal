@@ -1,6 +1,0 @@
-mutation DeleteUser($id: ID!) {
-  deletePerson(id: $id) {
-    successfull
-    message
-  }
-}

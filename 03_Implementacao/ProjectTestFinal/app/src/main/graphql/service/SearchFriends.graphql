@@ -1,0 +1,15 @@
+query SearchFriends($userId: ID, $userName: String) {
+  searchFriends(UserId: $userId, UserName: $userName) {
+    FriendId
+    UserReceiver {
+      UserId
+      UserName
+      Image
+    }
+    UserSender {
+      UserId
+      UserName
+      Image
+    }
+  }
+}

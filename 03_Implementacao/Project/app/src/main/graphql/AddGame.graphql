@@ -1,6 +1,0 @@
-mutation AddGame($userName: String!, $gameName: String!) {
-  addGame(UserName: $userName, GameName: $gameName) {
-    successfull
-    message
-  }
-}

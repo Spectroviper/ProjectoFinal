@@ -1,12 +1,12 @@
-import { BaseEntity, Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Achievements } from "./Achievements";
-import { Persons } from "./Persons";
+import { UserGames } from "./UserGames";
 
 @Entity()
 export class Games extends BaseEntity {
 
     @PrimaryGeneratedColumn()
-    id!: number;
+    GameId!: number;
 
     @Column()
     GameName!: string;
@@ -32,9 +32,13 @@ export class Games extends BaseEntity {
     @Column({nullable: true})
     Image!: string;
 
-    Players!: Persons[];
+    @Column({default: "system"})
+    CreatedBy!: string;
 
-    @OneToMany(() => Achievements, achievements => achievements.Game)
+    @OneToMany(() => Achievements, achievements => achievements.Game, {nullable: true})
     Achievements!: Achievements[];
+
+    @OneToMany(() => UserGames, userGames => userGames.Game, {nullable: true})
+    UserGames!: UserGames[];
 
 }

@@ -1,0 +1,12 @@
+query SearchUserGames($userId: ID, $gameName: String) {
+  searchUserGames(UserId: $userId, GameName: $gameName) {
+    UserGameId
+    AverageCompletion
+    Game {
+      GameId
+      GameName
+      Console
+      Image
+    }
+  }
+}

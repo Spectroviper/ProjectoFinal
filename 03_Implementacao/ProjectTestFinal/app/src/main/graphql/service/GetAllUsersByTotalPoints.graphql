@@ -1,0 +1,8 @@
+query GetAllUsersByTotalPoints {
+  getAllUsersByTotalPoints {
+    UserId
+    UserName
+    TotalPoints
+    Image
+  }
+}

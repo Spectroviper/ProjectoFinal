@@ -1,0 +1,6 @@
+mutation InviteUserToChallenge($userId: ID, $challengeId: ID, $isRequest: Boolean) {
+  inviteUserToChallenge(UserId: $userId, ChallengeId: $challengeId, IsRequest: $isRequest) {
+    message
+    successfull
+  }
+}

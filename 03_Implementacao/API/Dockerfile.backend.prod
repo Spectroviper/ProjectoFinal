@@ -1,0 +1,25 @@
+FROM node:latest
+
+WORKDIR /usr/src/app
+
+RUN npm config set strict-ssl false
+
+# Copiar apenas package.json e lock
+COPY Server/package*.json ./
+
+RUN npm install --legacy-peer-deps
+
+# Copiar o resto do projeto
+COPY Server/. .
+
+# Copiar o wait-for-it.sh para a raiz do container
+COPY Server/wait-for-it.sh ./wait-for-it.sh
+
+RUN chmod +x ./wait-for-it.sh
+
+RUN npm run build
+
+EXPOSE 3000
+
+# Usar o wait-for-it antes de arrancar a app
+CMD ["./wait-for-it.sh", "mysql:3306", "--", "npm", "run", "start"]

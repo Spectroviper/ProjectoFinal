@@ -1,0 +1,6 @@
+mutation RejectFriendInvite($friendId: ID) {
+  rejectFriendInvite(FriendId: $friendId) {
+    message
+    successfull
+  }
+}

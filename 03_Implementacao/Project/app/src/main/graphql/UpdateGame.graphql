@@ -1,6 +1,0 @@
-mutation UpdateGame($gameName: String!, $newGameName: String, $newAbout: String, $newConsole: String, $newDeveloper: String, $newPublisher: String, $newGenre: String, $newReleaseDate: Date, $newImage: String) {
-  updateGame(GameName: $gameName, NewConsole: $newConsole, NewDeveloper: $newDeveloper, NewPublisher: $newPublisher, NewGenre: $newGenre, NewReleaseDate: $newReleaseDate, NewImage: $newImage) {
-    successfull
-    message
-  }
-}

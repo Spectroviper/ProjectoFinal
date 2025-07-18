@@ -1,0 +1,6 @@
+mutation CreateAchievement($achievementName: String, $about: String, $totalCollectable: Int, $createdBy: String, $image: String, $gameId: ID) {
+  createAchievement(AchievementName: $achievementName, About: $about, TotalCollectable: $totalCollectable, CreatedBy: $createdBy, Image: $image, GameID: $gameId) {
+    message
+    successfull
+  }
+}

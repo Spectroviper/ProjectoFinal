@@ -1,0 +1,6 @@
+mutation DeleteChallengeAchievement($challengeAchievementId: ID) {
+  deleteChallengeAchievement(ChallengeAchievementId: $challengeAchievementId) {
+    message
+    successfull
+  }
+}

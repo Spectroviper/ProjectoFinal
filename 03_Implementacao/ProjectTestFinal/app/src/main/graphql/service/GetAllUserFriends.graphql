@@ -1,0 +1,8 @@
+query GetAllUserFriends($userId: ID) {
+  getAllUserFriends(UserId: $userId) {
+    UserId
+    UserName
+    TotalPoints
+    Image
+  }
+}

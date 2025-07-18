@@ -1,0 +1,6 @@
+mutation EndChallenge($challengeId: ID) {
+  endChallenge(ChallengeId: $challengeId) {
+    message
+    successfull
+  }
+}

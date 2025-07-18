@@ -1,0 +1,7 @@
+query SearchChallenges($challengeName: String, $type: String) {
+  searchChallenges(ChallengeName: $challengeName, Type: $type) {
+    ChallengeId
+    ChallengeName
+    Image
+  }
+}
